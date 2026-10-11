@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bråten gangsters</title>
+<style>
+  :root {
+    --bg: #0b0d11;
+    --panel: rgba(12, 14, 19, 0.92);
+    --fg: #eef0f2;
+    --muted: #9aa3ad;
+    --accent: #ffd23f;
+    --line: rgba(255, 255, 255, 0.12);
+    color-scheme: dark;
+  }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); overflow: hidden;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  canvas { display: block; cursor: crosshair; }
+  #overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(ellipse at center, rgba(10,12,16,0.55), rgba(5,6,8,0.92)); z-index: 2; padding: 16px; box-sizing: border-box; }
+  #overlay.hidden { display: none; }
+  .panel { width: min(640px, 100%); max-height: 100%; overflow: auto; background: var(--panel); border: 1px solid var(--line);
+    border-top: 4px solid var(--accent); padding: 26px 28px 24px; box-sizing: border-box; }
+  h1 { font-family: Impact, "Arial Black", sans-serif; font-weight: normal; font-size: clamp(44px, 11vw, 76px); line-height: 0.95;
+    letter-spacing: 1px; color: var(--accent); margin: 0; text-shadow: 4px 4px 0 #000; }
+  .sub { color: var(--muted); margin: 8px 0 20px; font-size: 15px; }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin: 18px 0 8px; font-weight: 600; }
+  .keys { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 14px; }
+  .keys kbd { font-family: ui-monospace, Menlo, monospace; font-size: 12px; background: #1d2129; border: 1px solid #333a45;
+    border-bottom-width: 2px; padding: 2px 6px; border-radius: 4px; white-space: nowrap; color: var(--fg); }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
+  @media (max-width: 560px) { .cols { grid-template-columns: 1fr; } }
+  button { margin-top: 22px; width: 100%; font-family: Impact, "Arial Black", sans-serif; font-size: 26px; letter-spacing: 1px;
+    padding: 12px; background: var(--accent); color: #111; border: 0; cursor: pointer; }
+  button:disabled { opacity: 0.5; cursor: default; }
+  button:hover:not(:disabled) { filter: brightness(1.08); }
+  #loadWrap { height: 4px; background: #1d2129; margin-top: 14px; }
+  #loadBar { height: 100%; width: 0; background: var(--accent); transition: width 0.15s; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 14px; }
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+<div id="overlay">
+  <div class="panel">
+    <h1 id="panelTitle">BRÅTEN GANGSTERS</h1>
+    <p class="sub">Sno bilar, ta jobb från telefonkiosker och håll dig undan snuten. Gaute knutters har ditt safehouse med sportbil och stridsvagn – hit kommer polisen inte in.</p>
+    <div class="cols">
+      <div>
+        <h2>Till fots</h2>
+        <div class="keys">
+          <span><kbd>WASD</kbd></span><span>Gå</span>
+          <span><kbd>Mus</kbd></span><span>Sikta</span>
+          <span><kbd>Klick</kbd> / <kbd>Space</kbd></span><span>Skjut / slå</span>
+          <span><kbd>Q</kbd> <kbd>E</kbd> <kbd>1–8</kbd></span><span>Byt vapen</span>
+          <span><kbd>F</kbd> / <kbd>Enter</kbd></span><span>In i bil</span>
+        </div>
+      </div>
+      <div>
+        <h2>I bil</h2>
+        <div class="keys">
+          <span><kbd>W</kbd> / <kbd>S</kbd></span><span>Gas / broms, back</span>
+          <span><kbd>A</kbd> / <kbd>D</kbd></span><span>Styr</span>
+          <span><kbd>Space</kbd></span><span>Handbroms</span>
+          <span><kbd>H</kbd></span><span>Tuta</span>
+          <span><kbd>F</kbd></span><span>Kliv ur</span>
+          <span><kbd>Mus</kbd> + <kbd>Klick</kbd></span><span>Kulspruta / kanon (Knutter GT, stridsvagn)</span>
+        </div>
+      </div>
+    </div>
+    <h2>Övrigt</h2>
+    <div class="keys">
+      <span><kbd>Esc</kbd> / <kbd>P</kbd></span><span>Paus</span>
+      <span><kbd>M</kbd></span><span>Ljud av/på</span>
+      <span>Handkontroll</span><span>Spak = gå/styr, RT = gas, LT = broms, X = skjut, B = handbroms, Y = in/ur bil</span>
+    </div>
+    <div id="loadWrap"><div id="loadBar"></div></div>
+    <button id="startBtn" disabled>Laddar…</button>
+    <p class="note">Grafik: Kenney.nl (CC0). Vapenljud: The Free Firearm Sound Library (CC0). Motorljud: domasx2 (CC0), Nayckron och qubodup (CC-BY 3.0).</p>
+  </div>
+</div>
+<script src="js/util.js"></script>
+<script src="js/assets.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/world.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
