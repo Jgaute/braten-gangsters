@@ -30,8 +30,8 @@ Kopiera innehållet i den här mappen till volymen (exemplet ovan är en Unraid-
 
 1. Logga in på github.com, välj **New repository**, döp det till `braten-gangsters`, välj **Public** och klicka **Create repository**.
 2. Klicka på länken **uploading an existing file**. Webbuppladdningen tar max 100 filer åt gången, så gör det i två omgångar:
-   - Omgång 1: dra in `index.html`, `README.md` och mapparna `js` och `assets/audio` (dra mappen `audio` från `assets`). Klicka **Commit changes**.
-   - Omgång 2: klicka **Add file → Upload files** och dra in mappen `assets/img`. Kolla att sökvägen blir `assets/img/...`. Om den hamnar fel, skapa först mappen `assets` och ladda upp inuti den. Klicka **Commit changes**.
+   - Omgång 1: dra in `index.html`, `README.md` och mapparna `js` och `audio`. Klicka **Commit changes**.
+   - Omgång 2: klicka **Add file → Upload files** och dra in mappen `img`. Klicka **Commit changes**.
 3. Gå till **Settings → Pages**. Under **Build and deployment**, välj **Deploy from a branch**, branch **main** och mapp **/ (root)**. Klicka **Save**.
 4. Efter en minut eller två ligger spelet på `https://<ditt-användarnamn>.github.io/braten-gangsters/`.
 
@@ -85,18 +85,18 @@ js/audio.js       ljudfiler och syntetiska ljud (motorer per fordonstyp, däck, 
 js/world.js       stadsgenerering, mark, hus i fejk-3D, minikarta
 js/entities.js    bilfysik, trafik-AI, fotgängare, partiklar
 js/game.js        spelare, vapen, polis, uppdrag, HUD, huvudloop
-assets/img/       sprites (Kenney)
-assets/audio/     ljud (Kenney och Free Firearm Sound Library, konverterade till mp3)
+img/              sprites (Kenney)
+audio/            ljud (Kenney, Free Firearm Sound Library, motorloopar)
 ```
 
 Staden genereras från ett frö (`seed` i `boot()` i `js/game.js`). Ändra siffran så får du en helt ny stad.
 
-Byta grafik: lägg nya PNG-filer med samma filnamn i `assets/img/`. Bilarna ska peka uppåt och gubbarna åt höger.
+Byta grafik: lägg nya PNG-filer med samma filnamn i `img/`. Bilarna ska peka uppåt och gubbarna åt höger.
 
 ## Licenser
 
-- Grafik och ljudeffekter: [Kenney](https://kenney.nl), CC0 (public domain), inklusive Top-down Tanks Remastered
+- Grafik och ljudeffekter: [Kenney](https://kenney.nl), CC0 (public domain): Top-down Shooter, Racing Pack, Top-down Tanks Remastered, Impact Sounds, Interface Sounds och Music Jingles. Vissa sprites är omfärgade.
 - Motorljud bilar: [racing car engine sound loops](https://opengameart.org/content/racing-car-engine-sound-loops) av domasx2, CC0
-- Motorljud stridsvagn: [Engine-loop heavy vehicle/tank](https://opengameart.org/content/engine-loop-heavy-vehicletank) av Nayckron och qubodup, CC-BY 3.0
-- Vapenljud: [The Free Firearm Sound Library](https://opengameart.org/content/the-free-firearm-sound-library), CC0
+- Motorljud stridsvagn: [Engine-loop heavy vehicle/tank](https://opengameart.org/content/engine-loop-heavy-vehicletank) av Nayckron och qubodup, licens [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/). Ändrad: konverterad till mono-WAV (`audio/engine_tank.wav`), kortad och överblandad i skarven för sömlös loop.
+- Vapenljud: [The Free Firearm Sound Library](https://opengameart.org/content/the-free-firearm-sound-library), CC0 (kortade och konverterade till mp3)
 - Koden: din att göra vad du vill med

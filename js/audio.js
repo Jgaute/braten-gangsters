@@ -44,7 +44,7 @@ function initAudio() {
 }
 
 async function loadSound(key, optional, file) {
-  const url = `assets/audio/${file || key + '.mp3'}`;
+  const url = `audio/${file || key + '.mp3'}`;
   try {
     const r = await fetch(url);
     if (!r.ok) throw new Error(r.status);

@@ -1,6 +1,6 @@
 'use strict';
 // ---------- Grafik ----------
-// Alla bilder laddas härifrån. Vill du byta grafik: lägg nya PNG-filer med samma namn i assets/img/.
+// Alla bilder laddas härifrån. Vill du byta grafik: lägg nya PNG-filer med samma namn i img/.
 const IMG = {};
 const CAR_COLORS = ['black', 'blue', 'green', 'red', 'yellow'];
 const COLOR_SV = { black: 'svart', blue: 'blå', green: 'grön', red: 'röd', yellow: 'gul', purple: 'lila', grey: 'grå' };
@@ -12,13 +12,13 @@ const POSES = ['stand', 'gun', 'machine', 'hold'];
 
 function assetList() {
   const L = [];
-  for (const c of CAR_COLORS) for (let n = 1; n <= 5; n++) L.push([`car_${c}_${n}`, `assets/img/cars/car_${c}_${n}.png`]);
-  for (const k in CHAR_FILES) for (const p of POSES) L.push([`${k}_${p}`, `assets/img/chars/${CHAR_FILES[k]}_${p}.png`]);
-  for (const t of ['asphalt', 'concrete', 'grass', 'water', 'dirt']) L.push([t, `assets/img/tiles/${t}.png`]);
-  for (const o of ['tree_large', 'tree_small', 'bush', 'crate', 'barrel', 'cone']) L.push([o, `assets/img/obj/${o}.png`]);
-  for (const w of ['gun', 'machine', 'silencer']) L.push(['w_' + w, `assets/img/obj/weapon_${w}.png`]);
-  for (const m of ['black', 'red']) L.push(['moto_' + m, `assets/img/cars/motorcycle_${m}.png`]);
-  L.push(['tank', 'assets/img/cars/tank_body.png'], ['tank_barrel', 'assets/img/cars/tank_barrel.png']);
+  for (const c of CAR_COLORS) for (let n = 1; n <= 5; n++) L.push([`car_${c}_${n}`, `img/cars/car_${c}_${n}.png`]);
+  for (const k in CHAR_FILES) for (const p of POSES) L.push([`${k}_${p}`, `img/chars/${CHAR_FILES[k]}_${p}.png`]);
+  for (const t of ['asphalt', 'concrete', 'grass', 'water', 'dirt']) L.push([t, `img/tiles/${t}.png`]);
+  for (const o of ['tree_large', 'tree_small', 'bush', 'crate', 'barrel', 'cone']) L.push([o, `img/obj/${o}.png`]);
+  for (const w of ['gun', 'machine', 'silencer']) L.push(['w_' + w, `img/obj/weapon_${w}.png`]);
+  for (const m of ['black', 'red']) L.push(['moto_' + m, `img/cars/motorcycle_${m}.png`]);
+  L.push(['tank', 'img/cars/tank_body.png'], ['tank_barrel', 'img/cars/tank_barrel.png']);
   return L;
 }
 
